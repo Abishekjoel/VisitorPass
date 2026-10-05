@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — VisitorPass</title>
+  <meta name="description" content="Front-desk terminal configuration, security preferences, and system diagnostic status.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="brand-title">Visitor<span>Pass</span> <span class="brand-tag">PRO</span></div>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-heading">Main Menu</div>
+        <a href="dashboard.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="register.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+          Register Visitor
+        </a>
+        <a href="visitors.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Visitor Records
+        </a>
+        <a href="currently-inside.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+          Currently Inside
+          <span class="nav-badge" id="nav-inside-count">0</span>
+        </a>
+
+        <div class="nav-heading" style="margin-top: 10px;">Management</div>
+        <a href="reports.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          Reports & Export
+        </a>
+        <a href="settings.html" class="nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="desk-status">
+          <div class="status-indicator"></div>
+          <div>
+            <strong>Main Reception Desk</strong><br>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Front-Desk Active</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle navigation">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="header-title-wrap">
+            <h1>Terminal & Security Settings</h1>
+            <p>Reception desk configuration, organization credentials, and API connectivity</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <div class="content-card" style="max-width: 800px; margin: 0 auto 24px;">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>Organization & Facility Setup</h2>
+              <p>Organization branding and terminal identity</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <form id="settings-org-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="set-org-name">Organization / Company Name</label>
+                  <input type="text" id="set-org-name" class="form-control" value="Acme Global Headquarters">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="set-desk-id">Front-Desk Station Identifier</label>
+                  <input type="text" id="set-desk-id" class="form-control" value="Reception Gate #1 (Main Tower)">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="set-security-phone">Security Emergency Extension</label>
+                  <input type="text" id="set-security-phone" class="form-control" value="+1 (555) 911-0000">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="set-badge-policy">Badge Retention Policy</label>
+                  <input type="text" id="set-badge-policy" class="form-control" value="Return badge upon checkout">
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-sm">Save Terminal Preferences</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="content-card" style="max-width: 800px; margin: 0 auto;">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>System Diagnostics & Backend API</h2>
+              <p>Verify live database connectivity and FastAPI service status</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--bg-surface-subtle); border-radius: var(--radius-md);">
+                <div>
+                  <strong>FastAPI REST Endpoint</strong>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);" id="diagnostic-api-url">http://127.0.0.1:8000/api</div>
+                </div>
+                <button class="btn btn-secondary btn-sm" id="btn-ping-api">
+                  Test Connection
+                </button>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--bg-surface-subtle); border-radius: var(--radius-md);">
+                <div>
+                  <strong>Interactive Swagger Documentation</strong>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">Explore and test OpenAPI endpoints</div>
+                </div>
+                <a href="http://127.0.0.1:8000/docs" target="_blank" class="btn btn-secondary btn-sm">
+                  Open Swagger Docs &rarr;
+                </a>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--bg-surface-subtle); border-radius: var(--radius-md);">
+                <div>
+                  <strong>Database Storage</strong>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);">SQLite 3 Engine (visitorpass.db)</div>
+                </div>
+                <span class="badge badge-in"><span class="badge-dot"></span>Connected & Active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("diagnostic-api-url").textContent = App.API_BASE;
+
+      // Load saved preferences if any
+      const savedOrg = localStorage.getItem("vp_org_name");
+      const savedDesk = localStorage.getItem("vp_desk_id");
+      if (savedOrg) document.getElementById("set-org-name").value = savedOrg;
+      if (savedDesk) document.getElementById("set-desk-id").value = savedDesk;
+
+      document.getElementById("settings-org-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const org = document.getElementById("set-org-name").value.trim();
+        const desk = document.getElementById("set-desk-id").value.trim();
+        localStorage.setItem("vp_org_name", org);
+        localStorage.setItem("vp_desk_id", desk);
+        App.toastSuccess("Settings Saved", "Front-desk terminal preferences stored successfully.");
+      });
+
+      document.getElementById("btn-ping-api").addEventListener("click", async () => {
+        try {
+          const stats = await App.fetchAPI("/dashboard/stats");
+          App.toastSuccess("API Online", `Connected successfully! Database contains ${stats.total_visits} total logged visits.`);
+        } catch (err) {
+          App.toastError("Connection Failed", err.message);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

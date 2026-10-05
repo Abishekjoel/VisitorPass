@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Visitor pass — Visitor Pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- js/ui.js builds the sidebar and top bar, then moves this
+     <main> into place and removes the hidden attribute -->
+<main class="page" hidden>
+  <div class="page-head">
+    <h1>Visitor pass</h1>
+    <p>Print this pass and hand it to the visitor.</p>
+  </div>
+
+  <div class="pass-bar" id="passBar">
+    <button class="btn btn-primary" id="printBtn">
+      <svg class="icon icon-sm"><use href="#i-print"/></svg> Print pass
+    </button>
+    <button class="btn btn-ghost" id="pdfBtn">Download PDF</button>
+  </div>
+
+  <div id="passHost"></div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/store.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/visitor-pass.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

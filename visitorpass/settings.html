@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Settings — Visitor Pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- js/ui.js builds the sidebar and top bar, then moves this
+     <main> into place and removes the hidden attribute -->
+<main class="page" hidden>
+  <div class="page-head">
+    <h1>Profile settings</h1>
+    <p>Manage your account details and preferences.</p>
+  </div>
+
+  <section class="card">
+    <div class="card-body">
+
+      <div class="profile-top">
+        <span class="avatar"><svg viewBox="0 0 100 116"><use href="#face"/></svg></span>
+        <span class="who">
+          <strong id="profName"></strong>
+          <span id="profEmail"></span>
+        </span>
+        <button class="btn btn-ghost" id="photoBtn">
+          <svg class="icon icon-sm"><use href="#i-camera"/></svg> Change photo
+        </button>
+      </div>
+
+      <form id="profForm" novalidate>
+        <div class="form-grid-3">
+          <div class="field">
+            <label for="p-name">Full name</label>
+            <input type="text" id="p-name">
+            <span class="err" data-for="p-name"></span>
+          </div>
+          <div class="field">
+            <label for="p-email">Email address</label>
+            <input type="email" id="p-email">
+            <span class="err" data-for="p-email"></span>
+          </div>
+          <div class="field">
+            <label for="p-phone">Phone number</label>
+            <input type="tel" id="p-phone" maxlength="10" inputmode="numeric">
+            <span class="err" data-for="p-phone"></span>
+          </div>
+        </div>
+
+        <h3 class="section-title">Change password</h3>
+        <div class="form-grid-3">
+          <div class="field">
+            <label for="p-cur">Current password</label>
+            <div class="control has-icon">
+              <svg class="icon icon-sm"><use href="#i-lock"/></svg>
+              <input type="password" id="p-cur" autocomplete="current-password">
+            </div>
+          </div>
+          <div class="field">
+            <label for="p-new">New password</label>
+            <div class="control has-icon">
+              <svg class="icon icon-sm"><use href="#i-lock"/></svg>
+              <input type="password" id="p-new" autocomplete="new-password">
+            </div>
+          </div>
+          <div class="field">
+            <label for="p-conf">Confirm password</label>
+            <div class="control has-icon">
+              <svg class="icon icon-sm"><use href="#i-lock"/></svg>
+              <input type="password" id="p-conf" autocomplete="new-password">
+            </div>
+            <span class="err" data-for="p-conf"></span>
+          </div>
+        </div>
+
+        <div class="form-actions" style="justify-content:flex-end">
+          <button type="submit" class="btn btn-primary">Update profile</button>
+        </div>
+      </form>
+
+    </div>
+  </section>
+</main>
+
+<script src="js/icons.js"></script>
+<script src="js/store.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

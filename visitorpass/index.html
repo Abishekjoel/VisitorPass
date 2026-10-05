@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign in — Visitor Pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="auth">
+  <div class="auth-card">
+
+    <!-- brand panel -->
+    <div class="auth-brand">
+      <div class="brand-badge"><svg class="icon"><use href="#i-badge"/></svg></div>
+      <h1>Visitor Pass</h1>
+      <p>Secure entry. Better management.</p>
+      <div class="brand-list">
+        <div><span class="ring"><svg class="icon icon-sm"><use href="#i-userplus"/></svg></span>Register visitors</div>
+        <div><span class="ring"><svg class="icon icon-sm"><use href="#i-badge"/></svg></span>Generate passes</div>
+        <div><span class="ring"><svg class="icon icon-sm"><use href="#i-clock"/></svg></span>Track entry &amp; exit</div>
+      </div>
+    </div>
+
+    <!-- sign-in form -->
+    <form class="auth-form" id="loginForm" novalidate>
+      <h2>Welcome back</h2>
+      <p class="sub">Sign in to continue to your account.</p>
+
+      <div class="field">
+        <div class="control has-icon">
+          <svg class="icon icon-sm"><use href="#i-user"/></svg>
+          <input type="text" id="loginUser" placeholder="Email or username" autocomplete="username">
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:14px">
+        <div class="control has-icon">
+          <svg class="icon icon-sm"><use href="#i-lock"/></svg>
+          <input type="password" id="loginPass" placeholder="Password" autocomplete="current-password">
+          <button type="button" class="pw-toggle" id="pwToggle" aria-label="Show password">
+            <svg class="icon icon-sm"><use href="#i-eye"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="auth-row">
+        <label class="checkline"><input type="checkbox" id="remember"> Remember me</label>
+        <a href="#" id="forgotLink">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Sign in</button>
+
+    </form>
+
+  </div>
+</div>
+
+<script src="js/icons.js"></script>
+<script src="js/store.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

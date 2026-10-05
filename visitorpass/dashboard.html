@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dashboard — Visitor Pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- js/ui.js builds the sidebar and top bar, then moves this
+     <main> into place and removes the hidden attribute -->
+<main class="page" hidden>
+  <div class="page-head">
+    <h1>Dashboard</h1>
+    <p>An overview of today's visitors.</p>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="dash-grid">
+    <section class="card">
+      <div class="card-head"><h2>Recent visitors</h2></div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Purpose</th><th>Check in</th><th>Status</th></tr>
+          </thead>
+          <tbody id="recentBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h2>Visitors this week</h2></div>
+      <div class="card-body" id="chartBox"></div>
+    </section>
+  </div>
+</main>
+
+<script src="js/icons.js"></script>
+<script src="js/store.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

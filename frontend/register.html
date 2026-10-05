@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Visitor — VisitorPass</title>
+  <meta name="description" content="Front-desk registration for incoming visitors with automated check-in and pass generation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="brand-title">Visitor<span>Pass</span> <span class="brand-tag">PRO</span></div>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-heading">Main Menu</div>
+        <a href="dashboard.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="register.html" class="nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+          Register Visitor
+        </a>
+        <a href="visitors.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Visitor Records
+        </a>
+        <a href="currently-inside.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+          Currently Inside
+          <span class="nav-badge" id="nav-inside-count">0</span>
+        </a>
+
+        <div class="nav-heading" style="margin-top: 10px;">Management</div>
+        <a href="reports.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          Reports & Export
+        </a>
+        <a href="settings.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="desk-status">
+          <div class="status-indicator"></div>
+          <div>
+            <strong>Main Reception Desk</strong><br>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Front-Desk Active</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle navigation">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="header-title-wrap">
+            <h1>Visitor Registration</h1>
+            <p>Register incoming visitors, verify identification, and generate official access pass</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <div class="live-clock-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="live-clock">--:--:--</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <div class="content-card" style="max-width: 900px; margin: 0 auto;">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>New Visitor Check-In Form</h2>
+              <p>Fields marked with <span style="color: var(--danger); font-weight: bold;">*</span> are mandatory for organization security compliance.</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <form id="visitor-registration-form" novalidate>
+              <div class="form-grid">
+                <!-- Full Name -->
+                <div class="form-group">
+                  <label class="form-label" for="full_name">Full Name <span class="req">*</span></label>
+                  <input type="text" id="full_name" name="full_name" class="form-control" placeholder="e.g. Jonathan Carter" required autocomplete="name">
+                  <div class="invalid-feedback" id="err-full_name">Please enter the visitor's full legal name.</div>
+                </div>
+
+                <!-- Organization / Company -->
+                <div class="form-group">
+                  <label class="form-label" for="organization">Organization / Company <span class="req">*</span></label>
+                  <input type="text" id="organization" name="organization" class="form-control" placeholder="e.g. Nexus Innovations / Self" required>
+                  <div class="invalid-feedback" id="err-organization">Please enter the visitor's company or organization.</div>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone Number <span class="req">*</span></label>
+                  <input type="tel" id="phone" name="phone" class="form-control" placeholder="e.g. +1 555-0199 or 9876543210" required autocomplete="tel">
+                  <div class="invalid-feedback" id="err-phone">Please enter a valid phone number (at least 7 digits).</div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                  <label class="form-label" for="email">Email Address <span class="req">*</span></label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="e.g. jcarter@example.com" required autocomplete="email">
+                  <div class="invalid-feedback" id="err-email">Please enter a valid email address.</div>
+                </div>
+
+                <!-- Person to Visit -->
+                <div class="form-group">
+                  <label class="form-label" for="person_to_visit">Person / Host to Visit <span class="req">*</span></label>
+                  <input type="text" id="person_to_visit" name="person_to_visit" class="form-control" placeholder="e.g. Eleanor Vance (HR Dept)" required>
+                  <div class="invalid-feedback" id="err-person_to_visit">Please specify the employee or department being visited.</div>
+                </div>
+
+                <!-- Purpose of Visit -->
+                <div class="form-group">
+                  <label class="form-label" for="purpose">Purpose of Visit <span class="req">*</span></label>
+                  <select id="purpose" name="purpose" class="form-control" required>
+                    <option value="">-- Select Purpose --</option>
+                    <option value="Official Business Meeting">Official Business Meeting</option>
+                    <option value="Job Interview">Job Interview</option>
+                    <option value="Client Consultation">Client Consultation</option>
+                    <option value="Vendor / Delivery / Dispatch">Vendor / Delivery / Dispatch</option>
+                    <option value="Maintenance / IT Support">Maintenance / IT Support</option>
+                    <option value="Guest / Personal Visit">Guest / Personal Visit</option>
+                    <option value="Audit / Inspection">Audit / Inspection</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <div class="invalid-feedback" id="err-purpose">Please select the purpose of this visit.</div>
+                </div>
+
+                <!-- ID Type -->
+                <div class="form-group">
+                  <label class="form-label" for="id_type">Identity Proof Type <span class="req">*</span></label>
+                  <select id="id_type" name="id_type" class="form-control" required>
+                    <option value="">-- Select Government / Official ID --</option>
+                    <option value="Driver's License">Driver's License</option>
+                    <option value="Passport">Passport</option>
+                    <option value="National ID">National ID / Aadhaar</option>
+                    <option value="Employee ID">Company Employee Badge</option>
+                    <option value="Student ID">Student ID</option>
+                    <option value="Voter ID">Voter ID</option>
+                    <option value="Other">Other ID</option>
+                  </select>
+                  <div class="invalid-feedback" id="err-id_type">Please select an ID verification type.</div>
+                </div>
+
+                <!-- ID Number -->
+                <div class="form-group">
+                  <label class="form-label" for="id_number">ID Document Number <span class="req">*</span></label>
+                  <input type="text" id="id_number" name="id_number" class="form-control" placeholder="e.g. DL-882914 or P772910" required>
+                  <div class="invalid-feedback" id="err-id_number">Please enter the ID document number.</div>
+                </div>
+
+                <!-- Vehicle Number (Optional) -->
+                <div class="form-group">
+                  <label class="form-label" for="vehicle_number">Vehicle Number <span class="form-hint">(Optional)</span></label>
+                  <input type="text" id="vehicle_number" name="vehicle_number" class="form-control" placeholder="e.g. ABC-1234 (Leave blank if walk-in)">
+                </div>
+
+                <!-- Address (Optional) -->
+                <div class="form-group">
+                  <label class="form-label" for="address">Residential / Office Address <span class="form-hint">(Optional)</span></label>
+                  <input type="text" id="address" name="address" class="form-control" placeholder="e.g. 100 Main St, Suite 500">
+                </div>
+
+                <!-- Notes / Remarks (Optional) -->
+                <div class="form-group col-full">
+                  <label class="form-label" for="notes">Security Remarks / Equipment Notes <span class="form-hint">(Optional)</span></label>
+                  <textarea id="notes" name="notes" rows="2" class="form-control" placeholder="e.g. Carrying laptop serial #SN-9982, visitor escorted by reception"></textarea>
+                </div>
+              </div>
+
+              <!-- Form Buttons -->
+              <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="btn-clear-form">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                  Clear Form
+                </button>
+                <button type="submit" class="btn btn-primary btn-lg" id="btn-submit-registration">
+                  <span id="submit-btn-text">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                    Check In Visitor & Issue Pass
+                  </span>
+                  <span id="submit-btn-spinner" style="display: none;">
+                    <div class="spinner"></div> Registering...
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pass history — Visitor Pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- js/ui.js builds the sidebar and top bar, then moves this
+     <main> into place and removes the hidden attribute -->
+<main class="page" hidden>
+  <div class="page-head">
+    <h1>Pass history</h1>
+    <p>Completed visits, with entry and exit times.</p>
+  </div>
+
+  <section class="card">
+    <div class="list-tools">
+      <div class="control has-icon">
+        <svg class="icon icon-sm"><use href="#i-search"/></svg>
+        <input type="text" id="searchBox" placeholder="Search by name, mobile or purpose">
+      </div>
+      <div class="control has-icon date">
+        <svg class="icon icon-sm"><use href="#i-calendar"/></svg>
+        <input type="date" id="dateBox">
+      </div>
+      <button class="btn btn-ghost" id="clearBtn" hidden>Clear</button>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>S.no</th><th>Name</th><th>Mobile</th><th>Purpose</th>
+            <th>Check in</th><th>Check out</th><th>Status</th><th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="table-foot">
+      <span class="count" id="rowCount"></span>
+      <div class="pager" id="pager"></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/icons.js"></script>
+<script src="js/store.js"></script>
+<script src="js/toast.js"></script>
+<script>window.TABLE_MODE = "completed";</script>
+<script src="js/visitor-table.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

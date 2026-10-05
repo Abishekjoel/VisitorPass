@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports & Export — VisitorPass</title>
+  <meta name="description" content="Generate visitor analytics, audit summaries, and export records as CSV.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .report-stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-xs);
+    }
+    .report-stat-card .val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-top: 4px;
+    }
+    .report-stat-card .lbl {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="brand-title">Visitor<span>Pass</span> <span class="brand-tag">PRO</span></div>
+      </div>
+
+      <nav class="nav-menu">
+        <div class="nav-heading">Main Menu</div>
+        <a href="dashboard.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Dashboard
+        </a>
+        <a href="register.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+          Register Visitor
+        </a>
+        <a href="visitors.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          Visitor Records
+        </a>
+        <a href="currently-inside.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+          Currently Inside
+          <span class="nav-badge" id="nav-inside-count">0</span>
+        </a>
+
+        <div class="nav-heading" style="margin-top: 10px;">Management</div>
+        <a href="reports.html" class="nav-item active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          Reports & Export
+        </a>
+        <a href="settings.html" class="nav-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="desk-status">
+          <div class="status-indicator"></div>
+          <div>
+            <strong>Main Reception Desk</strong><br>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Front-Desk Active</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle navigation">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="header-title-wrap">
+            <h1>Visitor Audit & Reports</h1>
+            <p>Aggregated statistics, custom date range filtering, and CSV export</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <button class="btn btn-primary" id="btn-export-csv">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Export Filtered CSV
+          </button>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <!-- 6 Metrics Cards: Total, Daily, Weekly, Monthly, Inside, Checked-out -->
+        <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));">
+          <div class="report-stat-card">
+            <div class="lbl">Total All-Time</div>
+            <div class="val" id="rep-total">0</div>
+          </div>
+          <div class="report-stat-card">
+            <div class="lbl">Daily (Today)</div>
+            <div class="val" style="color: var(--primary);" id="rep-daily">0</div>
+          </div>
+          <div class="report-stat-card">
+            <div class="lbl">Past 7 Days</div>
+            <div class="val" id="rep-weekly">0</div>
+          </div>
+          <div class="report-stat-card">
+            <div class="lbl">Past 30 Days</div>
+            <div class="val" id="rep-monthly">0</div>
+          </div>
+          <div class="report-stat-card">
+            <div class="lbl">Currently Inside</div>
+            <div class="val" style="color: var(--success);" id="rep-inside">0</div>
+          </div>
+          <div class="report-stat-card">
+            <div class="lbl">Checked Out</div>
+            <div class="val" style="color: var(--secondary);" id="rep-checkout">0</div>
+          </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label style="font-size: 0.82rem; font-weight: 600;">Start Date:</label>
+            <input type="date" id="rep-start-date" class="filter-date">
+          </div>
+
+          <div class="filter-group">
+            <label style="font-size: 0.82rem; font-weight: 600;">End Date:</label>
+            <input type="date" id="rep-end-date" class="filter-date">
+          </div>
+
+          <div class="filter-group">
+            <label style="font-size: 0.82rem; font-weight: 600;">Status:</label>
+            <select id="rep-status" class="filter-select">
+              <option value="all">All Visitors</option>
+              <option value="Checked In">Checked In Only</option>
+              <option value="Checked Out">Checked Out Only</option>
+            </select>
+          </div>
+
+          <div class="filter-group" style="margin-left: auto;">
+            <button class="btn btn-primary btn-sm" id="btn-apply-filters">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              Generate Report
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btn-reset-report-filters">
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Results Table -->
+        <div class="content-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <h2>Report Audit Query Results</h2>
+              <p id="rep-results-count">Showing matching visitors</p>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary btn-sm" id="btn-export-csv-alt">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download CSV
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Visitor ID</th>
+                  <th>Full Name</th>
+                  <th>Phone / Email</th>
+                  <th>Organization</th>
+                  <th>Person to Visit</th>
+                  <th>Purpose</th>
+                  <th>Check-In</th>
+                  <th>Check-Out</th>
+                  <th>Duration</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="report-tbody">
+                <tr>
+                  <td colspan="10" class="empty-state">
+                    <div class="spinner spinner-dark"></div>
+                    <div style="margin-top: 10px; color: var(--text-muted);">Generating analytical report...</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      loadReportData();
+
+      document.getElementById("btn-apply-filters").addEventListener("click", () => {
+        loadReportData(true);
+      });
+
+      document.getElementById("btn-reset-report-filters").addEventListener("click", () => {
+        document.getElementById("rep-start-date").value = "";
+        document.getElementById("rep-end-date").value = "";
+        document.getElementById("rep-status").value = "all";
+        loadReportData(true);
+      });
+
+      const handleCsvExport = async () => {
+        const start = document.getElementById("rep-start-date").value;
+        const end = document.getElementById("rep-end-date").value;
+        const status = document.getElementById("rep-status").value;
+
+        const params = new URLSearchParams();
+        if (start) params.append("start_date", start);
+        if (end) params.append("end_date", end);
+        if (status && status !== "all") params.append("status", status);
+
+        const exportUrl = `${App.API_BASE}/reports/export?${params.toString()}`;
+        
+        App.toastInfo("Export Initiated", "Generating CSV visitor records file...");
+        // Trigger direct browser download
+        const a = document.createElement("a");
+        a.href = exportUrl;
+        a.download = `visitor_records_export.csv`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      };
+
+      document.getElementById("btn-export-csv").addEventListener("click", handleCsvExport);
+      document.getElementById("btn-export-csv-alt").addEventListener("click", handleCsvExport);
+    });
+
+    async function loadReportData(showToast = false) {
+      const tbody = document.getElementById("report-tbody");
+      const start = document.getElementById("rep-start-date").value;
+      const end = document.getElementById("rep-end-date").value;
+      const status = document.getElementById("rep-status").value;
+
+      const params = new URLSearchParams();
+      if (start) params.append("start_date", start);
+      if (end) params.append("end_date", end);
+      if (status && status !== "all") params.append("status", status);
+
+      try {
+        const report = await App.fetchAPI(`/reports?${params.toString()}`);
+
+        // Update Summary Counters
+        document.getElementById("rep-total").textContent = report.summary.total_visitors;
+        document.getElementById("rep-daily").textContent = report.summary.daily_visitors;
+        document.getElementById("rep-weekly").textContent = report.summary.weekly_visitors;
+        document.getElementById("rep-monthly").textContent = report.summary.monthly_visitors;
+        document.getElementById("rep-inside").textContent = report.summary.currently_inside;
+        document.getElementById("rep-checkout").textContent = report.summary.checked_out_visitors;
+
+        // Render Report Table
+        document.getElementById("rep-results-count").textContent = `Found ${report.visitors.length} record(s) matching criteria`;
+
+        if (!report.visitors || report.visitors.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="10" class="empty-state">
+                <div class="empty-title">No visitor records match the specified filters</div>
+                <div class="empty-text">Try widening your date boundaries or selecting 'All Visitors'.</div>
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = report.visitors.map(v => `
+          <tr>
+            <td>
+              <a href="visitor-details.html?id=${encodeURIComponent(v.visitor_id)}" class="visitor-id-tag">
+                ${v.visitor_id}
+              </a>
+            </td>
+            <td><strong>${v.full_name}</strong></td>
+            <td>
+              <div>${v.phone}</div>
+              <div class="visitor-meta-sub">${v.email}</div>
+            </td>
+            <td>${v.organization}</td>
+            <td>${v.person_to_visit}</td>
+            <td>${v.purpose}</td>
+            <td>${App.formatDateTime(v.check_in)}</td>
+            <td>${v.check_out ? App.formatDateTime(v.check_out) : '<span style="color: var(--primary); font-weight: 600;">Still Inside</span>'}</td>
+            <td><strong>${v.duration}</strong></td>
+            <td>
+              <span class="badge ${v.status === 'Checked In' ? 'badge-in' : 'badge-out'}">
+                <span class="badge-dot"></span>${v.status}
+              </span>
+            </td>
+          </tr>
+        `).join("");
+
+        if (showToast) {
+          App.toastSuccess("Report Ready", `Loaded ${report.visitors.length} visitor record(s).`);
+        }
+      } catch (err) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="10" class="empty-state">
+              <div class="empty-title" style="color: var(--danger);">Failed to load report data</div>
+              <div class="empty-text">${err.message}</div>
+            </td>
+          </tr>
+        `;
+        App.toastError("Report Error", err.message);
+      }
+    }
+  </script>
+</body>
+</html>

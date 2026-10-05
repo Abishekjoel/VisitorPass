@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New visitor — Visitor Pass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- js/ui.js builds the sidebar and top bar, then moves this
+     <main> into place and removes the hidden attribute -->
+<main class="page" hidden>
+  <div class="page-head">
+    <h1>Visitor registration</h1>
+    <p>Fill in the details below to generate a visitor pass.</p>
+  </div>
+
+  <section class="card">
+    <div class="card-body">
+      <form id="regForm" novalidate>
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="f-name">Full name<span class="req">*</span></label>
+            <input type="text" id="f-name" placeholder="Enter visitor name" autocomplete="off">
+            <span class="err" data-for="f-name"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-mobile">Mobile number<span class="req">*</span></label>
+            <input type="tel" id="f-mobile" placeholder="10-digit mobile number" inputmode="numeric" maxlength="10">
+            <span class="err" data-for="f-mobile"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-email">Email id</label>
+            <input type="email" id="f-email" placeholder="Optional">
+            <span class="err" data-for="f-email"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-purpose">Purpose of visit<span class="req">*</span></label>
+            <select id="f-purpose"></select>
+            <span class="err" data-for="f-purpose"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-meet">Person to meet<span class="req">*</span></label>
+            <input type="text" id="f-meet" placeholder="Enter person's name">
+            <span class="err" data-for="f-meet"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-dept">Department / room no.</label>
+            <input type="text" id="f-dept" placeholder="Optional">
+          </div>
+
+          <div class="field">
+            <label for="f-date">Date of visit<span class="req">*</span></label>
+            <input type="date" id="f-date">
+            <span class="err" data-for="f-date"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-time">Time of visit<span class="req">*</span></label>
+            <input type="time" id="f-time">
+            <span class="err" data-for="f-time"></span>
+          </div>
+
+          <div class="field photo-field">
+            <label for="f-photo">Visitor photo</label>
+            <div class="photo-pick">
+              <div class="photo-preview" id="photoPreview"><svg viewBox="0 0 100 116"><use href="#face"/></svg></div>
+              <div>
+                <input type="file" id="f-photo" accept="image/jpeg,image/png,image/webp">
+                <button type="button" class="btn btn-ghost" id="photoRemove" hidden>Remove photo</button>
+                <small class="muted">Optional. Appears on the pass. JPEG, PNG or WebP.</small>
+              </div>
+            </div>
+            <span class="err" data-for="f-photo"></span>
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" id="resetBtn">Reset</button>
+          <button type="submit" class="btn btn-primary">Generate pass</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script src="js/icons.js"></script>
+<script src="js/store.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/new-visitor.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
